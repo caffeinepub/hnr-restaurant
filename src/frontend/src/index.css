@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Swiggy-inspired light theme - HNR Restaurant */
+    /* white #FFFFFF -> oklch(1 0 0) */
+    --background: 1 0 0;
+    /* #3D4152 body text -> oklch(0.34 0.018 265) */
+    --foreground: 0.34 0.018 265;
+    /* card white */
+    --card: 1 0 0;
+    --card-foreground: 0.34 0.018 265;
+    --popover: 1 0 0;
+    --popover-foreground: 0.34 0.018 265;
+    /* primary orange #FC8019 -> oklch(0.68 0.18 50) */
+    --primary: 0.68 0.18 50;
+    --primary-foreground: 1 0 0;
+    /* secondary light bg #F8F8F8 -> oklch(0.975 0 0) */
+    --secondary: 0.975 0 0;
+    --secondary-foreground: 0.34 0.018 265;
+    /* muted */
+    --muted: 0.96 0 0;
+    /* #93959F muted text -> oklch(0.62 0.01 265) */
+    --muted-foreground: 0.62 0.01 265;
+    /* accent orange */
+    --accent: 0.68 0.18 50;
+    --accent-foreground: 1 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    /* border #E9E9EB -> oklch(0.92 0.005 265) */
+    --border: 0.92 0.005 265;
+    --input: 0.92 0.005 265;
+    --ring: 0.68 0.18 50;
+    --chart-1: 0.68 0.18 50;
+    --chart-2: 0.55 0.12 160;
+    --chart-3: 0.65 0.15 270;
+    --chart-4: 0.7 0.18 30;
+    --chart-5: 0.6 0.14 280;
+    --sidebar: 0.975 0 0;
+    --sidebar-foreground: 0.34 0.018 265;
+    --sidebar-primary: 0.68 0.18 50;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.96 0 0;
+    --sidebar-accent-foreground: 0.34 0.018 265;
+    --sidebar-border: 0.92 0.005 265;
+    --sidebar-ring: 0.68 0.18 50;
+
+    /* HNR Swiggy-style Brand tokens */
+    --orange: 0.68 0.18 50;
+    --orange-hover: 0.62 0.18 50;
+    --orange-light: 0.95 0.04 60;
+    --heading: 0.24 0.02 265;
+    --body: 0.34 0.018 265;
+    --muted-text: 0.62 0.01 265;
+    --card-border: 0.92 0.005 265;
+    --section-alt: 0.975 0 0;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Poppins", sans-serif;
+    background-color: #ffffff;
+    color: #3d4152;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f8f8f8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #fc8019;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e8710a;
+  }
+}
+
+/* HNR Custom Animations */
+@keyframes pulse-whatsapp {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-whatsapp {
+  animation: pulse-whatsapp 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Orange glow effect */
+.orange-glow {
+  box-shadow: 0 0 20px rgba(252, 128, 25, 0.25), 0 0 40px
+    rgba(252, 128, 25, 0.1);
+}
+
+.orange-glow-hover:hover {
+  box-shadow: 0 0 24px rgba(252, 128, 25, 0.3), 0 0 48px
+    rgba(252, 128, 25, 0.12);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(252, 128, 25, 0.12);
+}
+
+/* Nav active indicator */
+.nav-active {
+  position: relative;
+  color: #fc8019;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #fc8019;
+  border-radius: 1px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #fc8019, #e8710a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section backgrounds */
+.section-white {
+  background-color: #ffffff;
+}
+
+.section-alt {
+  background-color: #f8f8f8;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #fff8f3 0%, #fff3e8 50%, #fff8f3 100%);
+}
+
+/* WhatsApp band */
+.whatsapp-band {
+  background: linear-gradient(135deg, #f0fff5 0%, #e8f8ed 100%);
+}
+
+/* Hide scrollbar for category tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
